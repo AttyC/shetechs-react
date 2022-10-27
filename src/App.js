@@ -25,6 +25,7 @@ function App() {
  
   useEffect(() => {
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -32,7 +33,7 @@ function App() {
           <h1>She Techs React Front End</h1>
           <ul>
             {results && results.products && results.products.map(product => {
-            const {id, images, description, slug, tags, title, url, variants} = product
+            const {id, images, description, tags, title, url} = product
               return (
               <li key={id}>
                 <a href={url}>{title}</a>
