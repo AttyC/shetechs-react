@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 function App() {
   const [results, setResults] = useState({})
-  const teemillAPI = (process.env.NODE_ENV == 'production') ? process.env.REACT_APP_LIVE_TEEMILL_URL : process.env.REACT_APP_DEV_TEEMILL_URL
+  const teemillAPI = (process.env.NODE_ENV === 'production') ? process.env.REACT_APP_LIVE_TEEMILL_URL : process.env.REACT_APP_DEV_TEEMILL_URL
 
   const options = {
     method: 'GET',
