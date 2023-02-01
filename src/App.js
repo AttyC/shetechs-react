@@ -42,50 +42,28 @@ function App() {
   //     console.error(err)
   //   }
   // }
- 
+  async function load() {
+    await productsPresenter.load(viewModel => {
+      copyViewModelToComponentState(viewModel)
+    })
+  }
   useEffect(() => {
-    console.log('hello')
-    async function load() {
-      await productsPresenter.load(viewModel => {
-        copyViewModelToComponentState(viewModel)
-      })
-    }
     load()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+console.log('viewMod', viewMod)
   return (
         <div className="App">
           <h1>She Techs React Front End</h1>
-
           <ul>
-            {/* {viewMod.map(product => {
-            const {id, images, description, tags, title, url} = product
+         {Array.from(viewMod).map(product => {
+            const {name, item_code} = product
               return (
-              <li key={id}>
-                <a href={url}>{title}</a>
-                <p>{description}</p>
-                <a href={url}>
-                  <img src={images[0].src} width="100" alt={description} />
-                </a>
-                {tags && <ul id="tags"> {tags.map(tag => <li>{tag}</li>)} </ul>}
-              </li>
-              )})} */}
-          </ul>
-          {/* <ul>
-            {results && results.products && results.products.map(product => {
-            const {id, images, description, tags, title, url} = product
-              return (
-              <li key={id}>
-                <a href={url}>{title}</a>
-                <p>{description}</p>
-                <a href={url}>
-                  <img src={images[0].src} width="100" alt={description} />
-                </a>
-                {tags && <ul id="tags"> {tags.map(tag => <li>{tag}</li>)} </ul>}
+              <li key={item_code}>
+                {name}
               </li>
               )})}
-          </ul> */}
+          </ul>
         </div>
       );
 }

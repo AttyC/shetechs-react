@@ -6,17 +6,11 @@ class ProductsPresenter {
     load = async (callback) => {
         await productsRepository.getProducts((productsPm) => {
             const productsVm = productsPm.map(productPm => {
-
-                // console.log('productsPm.length', productsPm.length)
                 return {
                     name: productPm.name, 
-                    item_code: productPm.item_code, 
-                    colours: productPm.colours
+                    item_code: productPm.item_code
                 }
-
-            
             })
-            console.log('productsVm', productsVm)
             callback(productsVm)
         })
     }
